@@ -1,0 +1,4 @@
+# For development environment
+/tmp/*
+!/tmp/.keep
+.flutter/

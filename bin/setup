@@ -1,0 +1,14 @@
+#!/bin/sh
+set -eux
+
+APP_ROOT=$(cd $(dirname $0); cd ..; pwd)
+FLUTTER_VERSION="2.0.3-stable"
+
+echo 'Clean Up SDK'
+rm -rf $APP_ROOT/.dart_tool $APP_ROOT/.flutter $APP_ROOT/tmp/flutter.zip
+echo 'Get the Flutter SDK'
+curl -v https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_$FLUTTER_VERSION.zip -o $APP_ROOT/tmp/flutter.zip
+unzip $APP_ROOT/tmp/flutter.zip -d $APP_ROOT/tmp
+mv $APP_ROOT/tmp/flutter $APP_ROOT/.flutter
+echo 'Run flutter doctor'
+$APP_ROOT/bin/flutter doctor
