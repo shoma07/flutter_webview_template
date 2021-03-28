@@ -1,8 +1,14 @@
 # flutter_webview_template
 
-A new Flutter project.
-
 ## Getting Started
+
+```sh
+# Get Flutter SDK
+# Check the output carefully for other software you might need to install or further tasks to perform
+$ bin/setup
+$ bin/flutter -h
+$ bin/flutter run
+```
 
 This project is a starting point for a Flutter application.
 
