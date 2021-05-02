@@ -2,13 +2,20 @@
 set -eux
 
 APP_ROOT=$(cd $(dirname $0); cd ..; pwd)
-FLUTTER_VERSION="2.0.3-stable"
+FLUTTER_INSTALL_VERSION="2.0.6"
+FLUTTER_CURRENT_VERSION=$(if [ -e $APP_ROOT/.flutter/version ]; then cat $APP_ROOT/.flutter/version; fi)
 
-echo 'Clean Up SDK'
-rm -rf $APP_ROOT/.dart_tool $APP_ROOT/.flutter $APP_ROOT/tmp/flutter.zip
-echo 'Get the Flutter SDK'
-curl -v https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_$FLUTTER_VERSION.zip -o $APP_ROOT/tmp/flutter.zip
-unzip $APP_ROOT/tmp/flutter.zip -d $APP_ROOT/tmp
-mv $APP_ROOT/tmp/flutter $APP_ROOT/.flutter
-echo 'Run flutter doctor'
+cd $APP_ROOT
+
+bundle install
+
+if [ "$FLUTTER_INSTALL_VERSION" != "$FLUTTER_CURRENT_VERSION" ]; then
+  rm -rf $APP_ROOT/.dart_tool $APP_ROOT/.flutter $APP_ROOT/tmp/flutter.zip
+  curl -v https://storage.googleapis.com/flutter_infra/releases/stable/macos/flutter_macos_$FLUTTER_INSTALL_VERSION-stable.zip \
+       -o $APP_ROOT/tmp/flutter.zip
+  unzip $APP_ROOT/tmp/flutter.zip -d $APP_ROOT/tmp
+  mv $APP_ROOT/tmp/flutter $APP_ROOT/.flutter
+fi
+
+$APP_ROOT/bin/flutter pub get
 $APP_ROOT/bin/flutter doctor
