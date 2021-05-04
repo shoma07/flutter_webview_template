@@ -4,5 +4,6 @@ APP_ROOT=$(cd $(dirname $0); cd ..; pwd)
 BASE_URL=$1
 shift
 
-$APP_ROOT/flutter run \
+$APP_ROOT/bin/icon
+$APP_ROOT/bin/flutter run \
     --dart-define=BASE_URL="$BASE_URL"
