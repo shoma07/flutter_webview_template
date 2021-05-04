@@ -34,8 +34,11 @@ class WebViewAppState extends State<WebViewApp> {
   }
 
   @override
-  Widget build(BuildContext context) =>
-      Scaffold(body: SafeArea(child: buildWebView()));
+  Widget build(BuildContext context) => Scaffold(
+        body: SafeArea(
+          child: buildWebView(),
+        ),
+      );
 
   Widget buildWebView() => WebView(
       initialUrl: _site,
