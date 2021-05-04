@@ -1,0 +1,5 @@
+
+#!/bin/sh
+
+APP_ROOT=$(cd $(dirname $0); cd ..; pwd)
+$APP_ROOT/bin/flutter format $APP_ROOT/lib $APP_ROOT/test

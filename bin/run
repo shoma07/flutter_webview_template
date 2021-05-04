@@ -1,0 +1,8 @@
+#!/bin/sh
+
+APP_ROOT=$(cd $(dirname $0); cd ..; pwd)
+BASE_URL=$1
+shift
+
+$APP_ROOT/flutter run \
+    --dart-define=BASE_URL="$BASE_URL"

@@ -1,23 +1,35 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-void main() => runApp(MaterialApp(home: WebViewApp()));
+void main() => runApp(
+      MaterialApp(
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: [
+          const Locale('ja'),
+        ],
+        home: WebViewApp(),
+      ),
+    );
 
 class WebViewApp extends StatefulWidget {
   @override
-  WebViewAppState createState() => new WebViewAppState();
+  WebViewAppState createState() => WebViewAppState();
 }
 
 class WebViewAppState extends State<WebViewApp> {
-  final String _site = 'https://flutter.dev';
+  static const _site = String.fromEnvironment('BASE_URL');
 
   @override
   void initState() {
     super.initState();
-    // Enable hybrid composition.
     if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
   }
 
@@ -28,9 +40,10 @@ class WebViewAppState extends State<WebViewApp> {
   Widget buildWebView() => WebView(
       initialUrl: _site,
       javascriptMode: JavascriptMode.unrestricted,
-      navigationDelegate: (NavigationRequest request) {
-        if (!request.isForMainFrame || request.url.startsWith('$_site/'))
+      navigationDelegate: (request) {
+        if (!request.isForMainFrame || request.url.startsWith('$_site/')) {
           return NavigationDecision.navigate;
+        }
 
         _launchInBrowser(request.url);
         return NavigationDecision.prevent;
