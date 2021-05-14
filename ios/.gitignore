@@ -33,3 +33,7 @@ Runner/GeneratedPluginRegistrant.*
 
 # Icons
 Runner/Assets.xcassets/AppIcon.appiconset/*.png
+
+# Splash
+Runner/Assets.xcassets/LaunchBackground.imageset/*.png
+Runner/Assets.xcassets/LaunchImage.imageset/*.png

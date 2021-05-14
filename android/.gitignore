@@ -11,4 +11,7 @@ GeneratedPluginRegistrant.java
 key.properties
 
 # Icons
-app/src/main/res/mipmap-*/launcher_icon.png
+app/src/main/res/mipmap*/launcher_icon.png
+
+# Splash
+app/src/main/res/drawable*↲
