@@ -1,10 +1,12 @@
 #!/bin/sh
 
 APP_ROOT=$(cd $(dirname $0); cd ..; pwd)
-BASE_URL=$1
+BASE_URL=${1:-https://flutter.dev}
 shift
 
 $APP_ROOT/bin/icon
 $APP_ROOT/bin/splash
 $APP_ROOT/bin/flutter run \
-    --dart-define=BASE_URL="$BASE_URL"
+    --dart-define=BASE_URL="$BASE_URL" \
+    --dart-define=APP_TITLE="SampleAPP" \
+    --dart-define=DISABLE_DEBUG_BANNER=false
