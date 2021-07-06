@@ -10,24 +10,25 @@ class App extends StatelessWidget {
   final String site;
   final AppVersion version;
 
-  App({
+  const App({
+    Key? key,
     required this.disableDebugBanner,
     required this.title,
     required this.site,
     required this.version,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: title,
       debugShowCheckedModeBanner: !disableDebugBanner,
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [const Locale('ja')],
+      supportedLocales: const [Locale('ja')],
       home: WebViewApp(
         site: site,
         version: version,

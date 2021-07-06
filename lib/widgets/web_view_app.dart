@@ -9,10 +9,11 @@ class WebViewApp extends StatefulWidget {
   final String site;
   final AppVersion version;
 
-  WebViewApp({
+  const WebViewApp({
+    Key? key,
     required this.site,
     required this.version,
-  });
+  }) : super(key: key);
 
   @override
   _WebViewAppState createState() => _WebViewAppState();
@@ -47,7 +48,7 @@ class _WebViewAppState extends State<WebViewApp> {
         child: WebView(
           initialUrl: '${widget.site}/',
           javascriptMode: JavascriptMode.unrestricted,
-          javascriptChannels: <JavascriptChannel>{},
+          javascriptChannels: const <JavascriptChannel>{},
           navigationDelegate: _navigationDelegate,
           gestureNavigationEnabled: true,
         ),
