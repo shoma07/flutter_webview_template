@@ -2,7 +2,7 @@
 set -eux
 
 APP_ROOT=$(cd $(dirname $0); cd ..; pwd)
-FLUTTER_INSTALL_VERSION="2.2.3"
+FLUTTER_INSTALL_VERSION="2.5.0"
 FLUTTER_CURRENT_VERSION=$(if [ -e $APP_ROOT/.flutter/version ]; then cat $APP_ROOT/.flutter/version; fi)
 
 cd $APP_ROOT
