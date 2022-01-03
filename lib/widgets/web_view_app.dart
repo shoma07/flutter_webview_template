@@ -20,14 +20,6 @@ class WebViewApp extends StatefulWidget {
 }
 
 class _WebViewAppState extends State<WebViewApp> {
-  @override
-  void initState() {
-    super.initState();
-    if (Platform.isAndroid) {
-      WebView.platform = SurfaceAndroidWebView();
-    }
-  }
-
   NavigationDecision _navigationDelegate(NavigationRequest request) {
     if (!request.isForMainFrame || request.url.startsWith('${widget.site}/')) {
       return NavigationDecision.navigate;
