@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:package_info/package_info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'utils/app_version.dart';
 import 'widgets/app.dart';
 

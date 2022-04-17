@@ -19,8 +19,8 @@ class AppVersion {
       return 0;
     }
     if (major > other.major ||
-        (major == major && minor > other.minor) ||
-        (major == major && minor == other.minor && patch > other.patch)) {
+        (major == other.major && minor > other.minor) ||
+        (major == other.major && minor == other.minor && patch > other.patch)) {
       return 1;
     }
 
